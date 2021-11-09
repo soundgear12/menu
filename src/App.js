@@ -4,7 +4,22 @@ import Categories from './Categories';
 import items from './data';
 
 function App() {
-  return <h2>menu project setup</h2>;
+  const [menuItems, setMenutItems] = useState(items);
+  const [categories, setCategories] = useState([]);
+
+  return (
+    <main>
+      <section className='menu section'>
+        <div className='title'>
+          <h2>our menu</h2>
+          <div className='underline'></div>
+          <Categories />
+          <Menu items={menuItems} />
+        </div>
+
+      </section>
+    </main>
+  );
 }
 
 export default App;
