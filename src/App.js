@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import Menu from './Menu';
 import Categories from './Categories';
 import items from './data';
+const allCateogries = ['all', ...new Set(items.map((item) => item.category))];
+
 
 function App() {
   const [menuItems, setMenutItems] = useState(items);
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(allCateogries);
 
   const filterItems = (category) => {
     if (category === 'all') {
@@ -13,7 +15,7 @@ function App() {
       return;
     }
     const newItems = items.filter((item) => item.category === category)
-    setMenutItems(newItems)
+    setMenutItems(newItems);
   };
 
   return (
@@ -22,7 +24,7 @@ function App() {
         <div className='title'>
           <h2>our menu</h2>
           <div className='underline'></div>
-          <Categories filterItems={filterItems} />
+          <Categories categories={categories} filterItems={filterItems} />
           <Menu items={menuItems} />
         </div>
 
